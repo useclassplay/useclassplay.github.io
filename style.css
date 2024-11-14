@@ -60,6 +60,16 @@ nav a:hover {
   cursor: pointer;
 }
 
+nav a.disabled:hover {
+  cursor: default;
+  background-color: gray;
+  color: white;
+}
+
+nav a.disabled {
+  color: gray;
+}
+
 .github-icon {
   height: 1.6rem;
   float: right;
@@ -196,17 +206,27 @@ nav a:hover {
 
 .card {
   border: 1px solid white;
-  width: 250px;
+  width: 150px;
   height: 175px;
   border-radius: 35px;
   justify-content: center;
   display: flex;
   transition: 0.4s;
   font-family: Inter;
+  background-color: transparent;
+  color: white;
 }
 
 .card:hover {
   transform: translate(0, -15px);
+  background-color: white;
+  box-shadow: 0 0 50px white;
+  scale: 105%;
+  color: black;
+}
+
+.noflex {
+  display: block;
 }
 
 h1.cardtext {

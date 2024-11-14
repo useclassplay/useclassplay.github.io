@@ -7,6 +7,9 @@ Here at Classplay, we strive to get you the best places for games, apps, and oth
 - Proxies
 - Youtube Downloaders
 - about:blank cloaker
+- Chatroom
+- Soundboard
+- Movies
 - More to come!
 
 ## Meet the Developers
