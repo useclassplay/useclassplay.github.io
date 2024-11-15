@@ -1,0 +1,252 @@
+body {
+  background-color: #1d1d1d;
+  color: #f1f1f1;
+  font-family: Inter;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(Inter.ttf);
+}
+
+.spacer {
+  height: 10vh;
+}
+
+* {
+  font-family: Inter;
+}
+
+#app {
+  width: px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1;
+  border-radius: 30px;
+}
+
+#auth-section, 
+#chat-section {
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: #3d3d3d;
+  transition: 0.3s;
+  transition: height 0.3s ease;
+}
+
+#auth-section {
+  width: 400px;
+  transition: 0.3s;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#room-title {
+  text-align: center;
+  color: white;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-size: 35px;
+}
+
+#auth-section input,
+#auth-section button,
+#chat-section input,
+#chat-section button {
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 1.1em;
+  border-radius: 17px;
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #1f51ff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+  width: 200px;
+}
+
+button:hover {
+  scale: 1.05;
+}
+
+#chat-box {
+  height: 350px; 
+  overflow-y: auto;
+  background-color: white;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border-radius: 30px;
+  color: black;
+}
+
+#message-input {
+  width: 100%;
+  display: inline-block;
+  font-size: 1.1em;
+}
+
+#send-btn {
+  width: 80px;
+  padding: 14px;
+  font-size: 1.1em;
+  border-radius: 15px;
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#leave-room-btn {
+  margin-top: 10px;
+  background-color: #ff4c4c;
+  width: 300px;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  color: #ccc;
+  font-size: 21px;
+  margin-top: auto;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.madeby {
+  color: white;
+  font-size: 14;
+  font-weight: 500;
+  padding: 10px;
+  position: fixed;
+  width: 99%;
+  bottom: 0;
+  justify-self: center;
+  text-align: center;
+  background-color: #1f51ff;
+}
+
+.madeby a {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 15px;
+  font-family: Inter;
+  padding: 20px;
+  position: fixed;
+  top: 20px;
+  right: -300px;
+  z-index: 1;
+  font-size: 16px;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  right: 10px;
+  opacity: 1;
+  animation: slideInRight 0.5s, slideOutRight 0.5s 5.5s; /* Slide out after 2.5 seconds */
+}
+
+@keyframes slideInRight {
+  from {
+    right: -500px;
+    opacity: 0;
+  }
+  to {
+    right: 10px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    right: 10px;
+    opacity: 1;
+  }
+  to {
+    right: -500px;
+    opacity: 0;
+  }
+}
+
+#room-id:hover {
+  cursor: pointer;
+  color: #1f51ff;
+}
+
+#room-id {
+  transition: 0.2s ease;
+}
+
+.toast2 {
+  position: fixed;
+  top: 20px;
+  right: -460px; /* Initially hidden, off-screen */
+  background-color: white;
+  color: black;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-size: 16px;
+  z-index: 9999;
+  transition: right 0.3s ease-in-out; /* Slide-in animation */
+}
+
+.toast2.show {
+  right: 10px; /* Moves the toast into view */
+}
+
+#clicktocopy {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  font-style: italic;
+  margin-top: -10px;
+  top: -10px;
+}
