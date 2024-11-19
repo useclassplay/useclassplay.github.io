@@ -534,3 +534,50 @@ li.right {
   font-weight: 500;
   cursor: pointer;
 }
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 15px;
+  font-family: Inter;
+  padding: 20px;
+  position: fixed;
+  top: 20px;
+  right: -300px;
+  z-index: 1;
+  font-size: 16px;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  right: 10px;
+  opacity: 1;
+  animation: slideInRight 0.5s, slideOutRight 0.5s 5.5s; /* Slide out after 2.5 seconds */
+}
+
+@keyframes slideInRight {
+  from {
+    right: -500px;
+    opacity: 0;
+  }
+  to {
+    right: 10px;
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    right: 10px;
+    opacity: 1;
+  }
+  to {
+    right: -500px;
+    opacity: 0;
+  }
+}

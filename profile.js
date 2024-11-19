@@ -15,6 +15,13 @@ function displayRegister() {
   registerForm.style.display = "block";
 }
 
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 6000);
+}
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
 
@@ -40,7 +47,7 @@ async function registerUser() {
   const doc = await usernameRef.get();
 
   if (doc.exists) {
-    window.alert("Username is already taken. Please choose another.");
+    showToast('stop trying to steal someone\'s username >:(');
     return;
   }
 
@@ -52,11 +59,11 @@ async function registerUser() {
       usernameRef.set({ uid: user.uid });
       db.collection("users").doc(user.uid).set({ username: username, createdAt: new Date() });
 
-      window.alert("Registration successful!");
+      showToast('successful login :D')
       showLogout();
     })
     .catch((error) => {
-      window.alert("Error during registration: " + error.message);
+      showToast('not successful login :( ' + error.message)
     });
 }
 
@@ -72,16 +79,16 @@ function loginUser() {
       showLogout();
     })
      .catch((error) => {
-      window.alert("Error during login: " + error.message);
+      showToast('not successful login :( ' + error.message)
     });
 }
 
 function logoutUser() {
   auth.signOut().then(() => {
-    window.alert("You have been logged out successfully!");
+    showToast('logged out :) ' + error.message)
     showLogin();
   }).catch((error) => {
-    window.alert("Error during logout: " + error.message);
+    showToast('not successful logout :( ' + error.message)
   });
 }
 

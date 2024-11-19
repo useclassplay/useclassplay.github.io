@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
     import { getFirestore, doc, setDoc, addDoc, collection, onSnapshot, serverTimestamp, query, orderBy, getDoc } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
     
     // Firebase configuration
@@ -202,3 +202,10 @@ roomCodeElement.addEventListener("click", () => {
     .then(() => showToast("code copied to clipboard :D"))
     .catch((error) => console.error("looks like we couldn't copy that text. \n error:", error));
 });
+
+if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
+  const textBox = document.getElementById('message-input');
+  if (message-input) {
+      message-input.focus();
+  }
+}
