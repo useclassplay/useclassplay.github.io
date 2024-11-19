@@ -11,7 +11,9 @@
 <body>
 
     <style>
-
+        body {
+            font-family: Arial, sans-serif;
+        }
     </style>
 
     <nav>
@@ -30,10 +32,9 @@
 <br><br><br><br>
 
     <center>
-        <h1>THIS FEATURE DOES NOT WORK...YET / WORK IN PROGRESS!</h1>
         <div id="register">
             <h1>Register an Account</h1>
-            <input type="text" id="register-username" placeholder="Username"><br><br>
+            <input type="text" id="register-email" placeholder="Email"><br><br>
             <input type="password" id="register-password" placeholder="Password"><br><br>
             <button onclick="registerUser()">Register</button>
             <br><br><br>
@@ -41,11 +42,10 @@
         </div>
     </center>
     
-      <!-- Login Form -->
-      <center>
+    <center>
         <div id="login" style="display: none;">
             <h1>Login to an Account</h1>
-            <input type="text" id="login-username" placeholder="Username"><br><br>
+            <input type="text" id="login-email" placeholder="Email"><br><br>
             <input type="password" id="login-password" placeholder="Password"><br><br>
             <button onclick="loginUser()">Login</button>
             <br><br><br>
@@ -53,17 +53,23 @@
         </div>
     </center>
     
-      <!-- Logout Button -->
-      <div id="logout" style="display: none;">
-        <h2>Welcome!</h2>
-        <button onclick="logoutUser()">Logout</button>
-      </div>
+    <center>
+        <div id="logout" style="display: none;">
+            <h2>Welcome!</h2>
+            <button onclick="logoutUser()">Logout</button>
+        </div>
+    </center>
 
     <script type="module">
-        import { Client } from 'appwrite';
-        
+        import { Client, Account } from 'appwrite';
+
+        // Initialize Appwrite client
         const client = new Client();
-        client.setProject('classplay-login1');
+        client
+            .setEndpoint('http://localhost/v1') // Replace with your Appwrite endpoint
+            .setProject('classplay-login1');   // Replace with your project ID
+
+        const account = new Account(client);
 
         function displayLogin() {
             document.getElementById('register').style.display = 'none';
@@ -75,25 +81,42 @@
             document.getElementById('register').style.display = 'block';
         }
 
-        function registerUser() {
-            const username = document.getElementById('register-username').value;
+        async function registerUser() {
+            const email = document.getElementById('register-email').value;
             const password = document.getElementById('register-password').value;
 
-            // Add Appwrite registration logic here
-            console.log('Register user:', username);
+            try {
+                await account.create('unique()', email, password);
+                alert('Registration successful! You can now log in.');
+                displayLogin();
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         }
 
-        function loginUser() {
-            const username = document.getElementById('login-username').value;
+        async function loginUser() {
+            const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
-            // Add Appwrite login logic here
-            console.log('Login user:', username);
+            try {
+                await account.createEmailSession(email, password);
+                alert('Login successful!');
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('logout').style.display = 'block';
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         }
 
-        function logoutUser() {
-            // Add Appwrite logout logic here
-            console.log('User logged out');
+        async function logoutUser() {
+            try {
+                await account.deleteSession('current');
+                alert('Logged out successfully.');
+                document.getElementById('logout').style.display = 'none';
+                displayLogin();
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         }
     </script>
 </body>
