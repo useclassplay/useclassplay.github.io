@@ -58,12 +58,42 @@
         <button onclick="logoutUser()">Logout</button>
       </div>
 
-    <script src="main.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script type="module">
+        import { Client } from 'appwrite';
+        
+        const client = new Client();
+        client.setProject('classplay-login1');
 
-    
-    
+        function displayLogin() {
+            document.getElementById('register').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function displayRegister() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'block';
+        }
+
+        function registerUser() {
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+
+            // Add Appwrite registration logic here
+            console.log('Register user:', username);
+        }
+
+        function loginUser() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Add Appwrite login logic here
+            console.log('Login user:', username);
+        }
+
+        function logoutUser() {
+            // Add Appwrite logout logic here
+            console.log('User logged out');
+        }
+    </script>
 </body>
 </html>
