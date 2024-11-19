@@ -14,6 +14,14 @@
         body {
             font-family: Arial, sans-serif;
         }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
     </style>
 
     <nav>
@@ -29,8 +37,9 @@
         </ul>   
     </nav>
 
-<br><br><br><br>
+    <br><br><br><br>
 
+    <!-- Register Form -->
     <center>
         <div id="register">
             <h1>Register an Account</h1>
@@ -42,6 +51,7 @@
         </div>
     </center>
     
+    <!-- Login Form -->
     <center>
         <div id="login" style="display: none;">
             <h1>Login to an Account</h1>
@@ -53,6 +63,7 @@
         </div>
     </center>
     
+    <!-- Logout Button -->
     <center>
         <div id="logout" style="display: none;">
             <h2>Welcome!</h2>
@@ -66,21 +77,24 @@
         // Initialize Appwrite client
         const client = new Client();
         client
-            .setEndpoint('http://localhost/v1') // Replace with your Appwrite endpoint
+            .setEndpoint('classplay-login1') // Replace with your Appwrite endpoint
             .setProject('classplay-login1');   // Replace with your project ID
 
         const account = new Account(client);
 
+        // Display Login Form
         function displayLogin() {
             document.getElementById('register').style.display = 'none';
             document.getElementById('login').style.display = 'block';
         }
 
+        // Display Register Form
         function displayRegister() {
             document.getElementById('login').style.display = 'none';
             document.getElementById('register').style.display = 'block';
         }
 
+        // Register User
         async function registerUser() {
             const email = document.getElementById('register-email').value;
             const password = document.getElementById('register-password').value;
@@ -94,6 +108,7 @@
             }
         }
 
+        // Login User
         async function loginUser() {
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
@@ -108,6 +123,7 @@
             }
         }
 
+        // Logout User
         async function logoutUser() {
             try {
                 await account.deleteSession('current');
