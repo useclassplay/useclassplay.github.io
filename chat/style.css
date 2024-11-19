@@ -250,3 +250,12 @@ button:hover {
   margin-top: -10px;
   top: -10px;
 }
+
+.general {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: -25px;
+}
