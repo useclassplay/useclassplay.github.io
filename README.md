@@ -18,6 +18,30 @@ Fill out an issue.
 ## `Update Schedule`
 whenever i feel like it! :)
 
+## Run on Codespaces
+
+Follow these steps to run classplay using GitHub Codespaces:
+
+### 1. Make a Codespace:
+  - first click on the green Code button
+  - click codespaces
+  - click + to create a codespace
+  - let the codespace load
+
+### 2. Open a Terminal
+   In your Codespace, open the terminal:
+   - Click **"Terminal" > "New Terminal"** from the top menu.
+
+### 3. Start a Simple HTTP Server
+   Use Python’s built-in HTTP server to serve your files:
+
+   - run:
+     ```bash
+     python3 -m http.server 8081
+     ```
+congrats after you open the 8081 port your open your in :) enjoy
+
+
 
 ## `Links`
 https://freereads-lite.github.io
